@@ -9,7 +9,7 @@ import (
 func main() {
 	args := os.Args[1:]
 	int_args := convertToIntegerArray(args)
-	fmt.Println(int_args)
+	fmt.Println(converToPhonetic(int_args))
 }
 
 func convertToIntegerArray(args []string) []int {
@@ -30,10 +30,13 @@ func converToPhonetic(values []int) []string {
 		currentVal := values[i]
 		current := ""
 		if currentVal != 0 {
-			index := currentVal % 10
-			currentCoversion := conversionFactor[index]
-			current += fmt.Sprintf("%s%s", currentCoversion, current)
-			currentVal /= 10
+			for currentVal > 0 {
+				index := currentVal % 10
+				currentCoversion := conversionFactor[index]
+				current += fmt.Sprintf("%s%s", currentCoversion, current)
+				currentVal /= 10
+			}
+			result[i] = current
 		} else {
 			result[i] = conversionFactor[currentVal]
 		}
