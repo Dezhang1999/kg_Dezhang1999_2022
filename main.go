@@ -28,12 +28,11 @@ func converToPhonetic(values []int) []string {
 	conversionFactor := []string{"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"}
 	for i := 0; i < len(values); i++ {
 		currentVal := values[i]
-		current := ""
 		if currentVal != 0 {
+			current := ""
 			for currentVal > 0 {
 				index := currentVal % 10
-				currentCoversion := conversionFactor[index]
-				current += fmt.Sprintf("%s%s", currentCoversion, current)
+				current = fmt.Sprintf("%s%s", conversionFactor[index], current)
 				currentVal /= 10
 			}
 			result[i] = current
