@@ -4,12 +4,14 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func main() {
 	args := os.Args[1:]
 	int_args := convertToIntegerArray(args)
-	fmt.Println(converToPhonetic(int_args))
+	result := converToPhonetic(int_args)
+	fmt.Println(strings.Join(result, ","))
 }
 
 func convertToIntegerArray(args []string) []int {
